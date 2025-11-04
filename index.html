@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solvify - حل المشاكل فورياً</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h1>Solvify</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#home">الرئيسية</a>
+                    <a href="#services">الخدمات</a>
+                    <a href="#about">من نحن</a>
+                    <a href="#contact">اتصل بنا</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">حل مشاكلك فوراً</h1>
+                <p class="hero-subtitle">من الواجبات الأكاديمية إلى إصلاحات المنزل، خبراؤنا جاهزون للمساعدة. اختر خدمة للبدء.</p>
+                
+                <div class="service-categories">
+                    <div class="category-card" data-category="student">
+                        <div class="category-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L13.09 8.26L19 7L14.74 12L21 13.09L14.74 14.74L19 21L13.09 19.09L12 26L10.91 19.09L5 21L9.26 14.74L3 13.09L9.26 12L5 7L10.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <h3>الخدمات الطلابية</h3>
+                        <p>بحوث، تقارير، عروض تقديمية، مشاريع تخرج</p>
+                    </div>
+                    
+                    <div class="category-card" data-category="tech">
+                        <div class="category-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17 19H7V5H17M17 1H7C5.89 1 5 1.89 5 3V21C5 22.11 5.89 23 7 23H17C18.11 23 19 22.11 19 21V3C19 1.89 18.11 1 17 1M16 13H13V8H11V13H8L12 17L16 13Z"/>
+                            </svg>
+                        </div>
+                        <h3>الدعم التقني</h3>
+                        <p>حل مشاكل التطبيقات، النصوص، الصور، الصوتيات</p>
+                    </div>
+                    
+                    <div class="category-card" data-category="home">
+                        <div class="category-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z"/>
+                            </svg>
+                        </div>
+                        <h3>خدمات المنزل</h3>
+                        <p>سباكة، كهرباء، إلكترونيات</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Submission Modal -->
+    <div class="modal" id="problemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>أرسل مشكلتك</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            
+            <div class="problem-form">
+                <div class="form-group">
+                    <label>اختر نوع المشكلة:</label>
+                    <div class="problem-type-selector">
+                        <button class="type-btn active" data-type="text">نص</button>
+                        <button class="type-btn" data-type="image">صورة</button>
+                        <button class="type-btn" data-type="video">فيديو</button>
+                        <button class="type-btn" data-type="audio">صوت</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>وصف المشكلة:</label>
+                    <textarea id="problemDescription" placeholder="اشرح مشكلتك بالتفصيل..." rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>إرفاق ملف (اختياري):</label>
+                    <div class="file-upload-area" id="fileUploadArea">
+                        <div class="upload-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                        </div>
+                        <p>اسحب الملفات هنا أو اضغط للرفع</p>
+                        <p class="upload-hint">يدعم: الصور، الفيديوهات، الصوتيات، المستندات</p>
+                        <input type="file" id="fileInput" multiple accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt">
+                    </div>
+                </div>
+
+                <button class="submit-btn" id="submitProblem">إرسال المشكلة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Bot -->
+    <div class="ai-chat" id="aiChat">
+        <div class="chat-header">
+            <div class="chat-title">
+                <div class="ai-avatar">🤖</div>
+                <span>المساعد الذكي</span>
+            </div>
+            <button class="chat-toggle" id="chatToggle">+</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <p>مرحباً! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="اكتب رسالتك...">
+                <button id="sendMessage">إرسال</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L13.09 8.26L19 7L14.74 12L21 13.09L14.74 14.74L19 21L13.09 19.09L12 26L10.91 19.09L5 21L9.26 14.74L3 13.09L9.26 12L5 7L10.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <h3>الخدمات الطلابية</h3>
+                    <ul>
+                        <li>بحوث أكاديمية</li>
+                        <li>تقارير ومشاريع</li>
+                        <li>عروض تقديمية</li>
+                        <li>واجبات ومهام</li>
+                        <li>برمجة ومشاريع تقنية</li>
+                        <li>مشاريع التخرج</li>
+                    </ul>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 19H7V5H17M17 1H7C5.89 1 5 1.89 5 3V21C5 22.11 5.89 23 7 23H17C18.11 23 19 22.11 19 21V3C19 1.89 18.11 1 17 1M16 13H13V8H11V13H8L12 17L16 13Z"/>
+                        </svg>
+                    </div>
+                    <h3>الدعم التقني</h3>
+                    <ul>
+                        <li>حل مشاكل التطبيقات</li>
+                        <li>تحرير الصور والفيديو</li>
+                        <li>معالجة الصوت</li>
+                        <li>برمجة وتطوير</li>
+                        <li>دعم المواقع</li>
+                        <li>حل مشاكل التقنية</li>
+                    </ul>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z"/>
+                        </svg>
+                    </div>
+                    <h3>خدمات المنزل</h3>
+                    <ul>
+                        <li>إصلاحات السباكة</li>
+                        <li>الأعمال الكهربائية</li>
+                        <li>صيانة الإلكترونيات</li>
+                        <li>التركيبات المنزلية</li>
+                        <li>الصيانة الدورية</li>
+                        <li>استشارات فنية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>من نحن</h2>
+                    <p>منصة Solvify هي حل شامل لكل المشاكل التي قد تواجهها في حياتك اليومية. نحن نجمع بين خبراء متخصصين وتقنيات ذكية لتقديم حلول فورية وفعالة.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">⚡</div>
+                            <div>
+                                <h4>حل فوري</h4>
+                                <p>احصل على حلول سريعة لمشاكلك</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">💎</div>
+                            <div>
+                                <h4>جودة عالية</h4>
+                                <p>خبراء معتمدون وخدمة متميزة</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🔒</div>
+                            <div>
+                                <h4>آمن وموثوق</h4>
+                                <p>حماية كاملة لبياناتك ومعلوماتك</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-placeholder">
+                        <div class="placeholder-icon">🚀</div>
+                        <p>صورة توضيحية عن الفريق</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">اتصل بنا</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>البريد الإلكتروني</h4>
+                            <p>info@solvify.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <h4>الهاتف</h4>
+                            <p>+966 12 345 6789</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>العنوان</h4>
+                            <p>الرياض، المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="اسمك" required>
+                    <input type="email" placeholder="بريدك الإلكتروني" required>
+                    <input type="text" placeholder="الموضوع" required>
+                    <textarea placeholder="رسالتك" rows="5" required></textarea>
+                    <button type="submit">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Solvify</h3>
+                    <p>حل المشاكل فورياً - شريكك الموثوق لكل احتياجاتك</p>
+                </div>
+                <div class="footer-section">
+                    <h4>الخدمات</h4>
+                    <ul>
+                        <li><a href="#">الخدمات الطلابية</a></li>
+                        <li><a href="#">الدعم التقني</a></li>
+                        <li><a href="#">خدمات المنزل</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>الدعم</h4>
+                    <ul>
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تابعنا</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">📱</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Solvify. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
